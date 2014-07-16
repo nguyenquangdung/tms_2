@@ -2,8 +2,10 @@ module SessionsHelper
   def sign_in(trainee)
     remember_token = Trainee.new_remember_token
     cookies.permanent[:remember_token] = remember_token
-    trainee.update_attributes(:remember_token => Trainee.digest(remember_token))
+    trainee.not_validates_password = true
+    trainee.update_attributes! remember_token: Trainee.digest(remember_token)
     self.current_trainee = trainee
+    
   end
  
   def signed_in?
