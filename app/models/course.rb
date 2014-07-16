@@ -3,5 +3,5 @@ class Course < ActiveRecord::Base
   has_many :course_subjects
   has_many :managing_courses
   validates :description, presence: true
-  validates :course_name, presence: true,length: {maxmimum:70}
+  validates :course_name, presence: true
 end
