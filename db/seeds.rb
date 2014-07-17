@@ -58,3 +58,4 @@ subject_task1=[[3,1],[3,2],[3,3],[3,4],[3,5],[3,6],[3,7]]
 subject_task1.each do |subject_id,task_id|
   SubjectTask.create( subject_id:subject_id,task_id:task_id)
 end
+
