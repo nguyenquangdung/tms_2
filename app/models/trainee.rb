@@ -10,7 +10,10 @@ class Trainee < ActiveRecord::Base
                     uniqueness: { case_sensitive: false },
                     length: {maximum:50}
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, unless: :not_validates_password
+
+  attr_accessor :not_validates_password
+
 
   def Trainee.new_remember_token
     SecureRandom.urlsafe_base64
