@@ -19,9 +19,7 @@ end
 #Trainee.create(name: 'Germany2', email: "Nguyen Van A2", password: "123456")
 #Trainee.create(name: 'Germany3', email: "Nguyen Van A3", password: "123456")
 #Trainee.create(name: 'Germany4', email: "Nguyen Van A4", password: "123456")
-course_list=[["Course K5434T", "subject_list.each do |subject_name, description|
-  Subject.create( subject_name: subject_name, description: description )
-end"]]
+course_list=[["Course K5434T", "The MySQL development project has made its source code available under the terms of the GNU General Public License, as well as under a variety of proprietary agreements. MySQL was owned and sponsored by a single for-profit firm, the Swedish company MySQL AB, now owned by Oracle Corporation"]]
 course_list.each do |course_name, description|
   Course.create( course_name: course_name, description: description )
 end
@@ -56,6 +54,17 @@ task_list1.each do |task_description,id|
 end
 subject_task1=[[3,1],[3,2],[3,3],[3,4],[3,5],[3,6],[3,7]]
 subject_task1.each do |subject_id,task_id|
-  SubjectTask.create( subject_id:subject_id,task_id:task_id)
+  SubjectTask.create(subject_id: subject_id,task_id: task_id)
 end
-
+enroll_list = [[1,1,"New"],[3,1,"New"]]
+enroll_list.each do |trainee_id,course_id,status|
+  Enroll.create(trainee_id: trainee_id,course_id: course_id,status: status)  
+end
+trainee_subject_list = [[1,1,"New"],[1,2,"New"],[1,3,"New"],[1,4,"New"],[3,1,"New"],[3,2,"New"],[3,3,"New"],[3,4,"New"]]
+trainee_subject_list.each do |trainee_id,subject_id,status|
+  TraineeSubject.create(trainee_id:trainee_id,subject_id:subject_id,status:status)
+end
+trainee_task_list = [[1,1,"Finished"],[1,2,"New"],[1,3,"New"],[1,4,"New"],[1,5,"New"],[1,6,"New"],[1,7,"New"],[3,1,"Finished"],[3,2,"Finished"],[3,3,"Finished"],[3,4,"New"],[3,5,"New"],[3,6,"New"],[3,7,"New"]]
+trainee_task_list.each do |trainee_id,task_id,status|
+  AssignedTask.create(trainee_id:trainee_id,task_id:task_id,status:status)
+end
