@@ -9,6 +9,7 @@ class TraineesController < ApplicationController
 
   def show
     @trainee = Trainee.find params[:id]
+    @enrolls = @trainee.enrolls
   end
 
   def edit

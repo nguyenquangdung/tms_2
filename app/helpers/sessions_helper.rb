@@ -5,7 +5,7 @@ module SessionsHelper
     trainee.not_validates_password = true
     trainee.update_attributes! remember_token: Trainee.digest(remember_token)
     self.current_trainee = trainee
-    
+
   end
  
   def signed_in?

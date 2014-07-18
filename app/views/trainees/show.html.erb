@@ -8,4 +8,15 @@
       </h1>
     </section>
   </aside>
+  <aside class="span8">
+    <section>
+      <h1>
+        Courses Enroll 
+      </h1>
+      <% @enrolls.each do |enroll| %>
+        <% course = enroll.course %>
+        <p><%=link_to course.course_name,course_path(course.id) %> -- <%=enroll.status%> </p>
+      <% end %>
+    </section>
+  </aside>
 </div>
