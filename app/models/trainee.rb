@@ -1,4 +1,5 @@
 class Trainee < ActiveRecord::Base
+  attr_accessor :not_validates_password
 	has_many :assigned_tasks
 	has_many :enrolls
 	has_many :trainee_subjects
@@ -12,7 +13,7 @@ class Trainee < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, unless: :not_validates_password
 
-  attr_accessor :not_validates_password
+  
 
 
   def Trainee.new_remember_token

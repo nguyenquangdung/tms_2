@@ -1,6 +1,6 @@
 <% provide(:title, 'All trainees') %>
 <h1>All trainees</h1>
-
+<%= will_paginate %>
 
 <ul class="trainees">
   <% @trainees.each do |trainee| %>
@@ -11,3 +11,4 @@
   <% end %>
 </ul>
 
+<%= will_paginate %>

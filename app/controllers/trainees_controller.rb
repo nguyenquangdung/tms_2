@@ -1,12 +1,13 @@
 class TraineesController < ApplicationController
-  before_action :signed_in_trainee, only: [:edit, :update]
+  before_action :signed_in_trainee, only: [:index, :edit, :update]
   before_action :be_trainee
+  before_action :correct_trainee,   only: [:edit, :update]
 
   def new
   end
 
   def index
-    @trainees = Trainee.all
+    @trainees = Trainee.paginate page: params[:page] 
   end
 
   def show
@@ -49,8 +50,15 @@ class TraineesController < ApplicationController
     end
 
     # Before filters
+    def correct_trainee
+      @trainee = Trainee.find params[:id] 
+      redirect_to(root_url) unless current_trainee?(@trainee)
+    end
 
     def signed_in_trainee
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in." unless signed_in?
+      end
     end
 end
