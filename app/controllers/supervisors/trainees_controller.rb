@@ -16,10 +16,10 @@ class Supervisors::TraineesController < ApplicationController
   end
 
   def create
-    @strainee = Trainee.new user_params
+    @trainee = Trainee.new trainee_params
     if @trainee.save
       flash[:success] = "Create user success"
-      redirect_to supervisor_trainee_path(@trainee)
+      redirect_to supervisors_trainee_path(@trainee)
     else
       render 'new'
     end
@@ -44,7 +44,7 @@ class Supervisors::TraineesController < ApplicationController
   def destroy
     Trainee.find(params[:id]).destroy
     flash[:success] = "Trainee destroyed."
-    redirect_to supervisor_trainee_url
+    redirect_to supervisors_trainees_url
   end
   private
   
