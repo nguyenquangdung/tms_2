@@ -1,0 +1,34 @@
+<% provide(:title, 'All users') %>
+<h1>All Users</h1>
+
+
+<ul class="trainees">
+  <div class = "row">
+    <aside class="span6">
+      <section>
+	    <h3>Trainees</h3>
+        <% @supervisors.each do |trainee| %>
+          <% if trainee.supervisor == 0 %>
+            <li>
+            <%= gravatar_for trainee, size: 52 %>
+            <%= link_to trainee.name, supervisors_trainee_path(trainee.id) %>
+            </li>
+          <% end %>
+        <% end %>
+      </section>
+    </aside>
+	<aside class="span6">
+      <section>
+        <h3>Supervisors</h3>
+        <% @supervisors.each do |trainee| %>
+          <% if trainee.supervisor == 1 %>
+            <li>
+            <%= gravatar_for trainee, size: 52 %>
+            <%= link_to trainee.name, supervisors_trainee_path(trainee.id) %>
+            </li>
+          <% end %>
+        <% end %>
+      </section>
+    </aside>
+  </div>
+</ul>

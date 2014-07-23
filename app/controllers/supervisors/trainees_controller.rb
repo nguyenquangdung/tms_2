@@ -2,12 +2,17 @@ class Supervisors::TraineesController < ApplicationController
   before_filter :signed_in_trainee
   before_filter :correct_trainee
 
+
   def show
     @trainee = Trainee.find params[:id]
+    @enrolls = @trainee.enrolls
   end
 
   def new
     @trainee = Trainee.new
+  end
+  def index
+    @supervisors = Trainee.all.paginate page: params[:page] 
   end
 
   def create
@@ -19,6 +24,23 @@ class Supervisors::TraineesController < ApplicationController
       render 'new'
     end
   end
+  def edit
+    @trainee = Trainee.find params[:id]
+  end
+
+  def update    
+     
+    
+    @trainee = Trainee.find params[:id]
+    if @trainee.update_attributes trainee_params
+      flash[:success] = "Profile updated"
+      redirect_to supervisors_trainee_path(@trainee)
+    else
+      render 'edit'
+    end
+  end
+
+
   def destroy
     Trainee.find(params[:id]).destroy
     flash[:success] = "Trainee destroyed."
