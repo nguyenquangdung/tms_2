@@ -8,6 +8,7 @@
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
             <% if be_trainee? current_trainee %>
+            <li><%= link_to "Courses", courses_path %></li>
             <li><%= link_to "Trainees", trainees_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -23,7 +24,7 @@
               </ul>
             </li>
             <%else %>
-    
+            <li><%= link_to "Courses", supervisors_courses_path %></li>    
             <li><%= link_to "Users", supervisors_trainees_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
