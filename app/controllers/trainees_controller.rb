@@ -3,9 +3,6 @@ class TraineesController < ApplicationController
   before_action :be_trainee
   before_action :correct_trainee,   only: [:edit, :update]
 
-  def new
-  end
-
   def index
     @trainees = Trainee.paginate page: params[:page] 
   end
@@ -15,8 +12,7 @@ class TraineesController < ApplicationController
     @enrolls = @trainee.enrolls
   end
 
-  def edit
-    @trainee = Trainee.find params[:id]
+  def new
   end
 
   def create
@@ -28,6 +24,10 @@ class TraineesController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def edit
+    @trainee = Trainee.find params[:id]
   end
 
   def update

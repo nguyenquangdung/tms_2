@@ -12,9 +12,13 @@
             <li>
             <%= gravatar_for trainee, size: 52 %>
             <%= link_to trainee.name, supervisors_trainee_path(trainee.id) %>
+            | <%= link_to "edit", edit_supervisors_trainee_path(trainee)%>
+            | <%= link_to "delete", supervisors_trainee_path(trainee), method: :delete, data: { confirm: "You sure?" } %>
             </li>
           <% end %>
         <% end %>
+        <br></br>
+        <p><%= link_to "Create new trainee", new_supervisors_trainee_path %> </p>
       </section>
     </aside>
 	<aside class="span6">
